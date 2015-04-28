@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+
+.logo_image{
+    margin-top: 30px;
+    align-self: center;
+    font-size: 20px;
+    text-wrap:normal;
+    text-align: center;
+    color: #ffffff;
+}
+.logo_image > img{
+    width:150%;
+    height:150%;
+
+}
+.buttonSignIn{
+    font-family: inherit;
+    background-color: #3061be;
+    color: #ffffff;
+    font-weight: 500;
+}
+.buttonSignIn:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.sidebarcolor{
+    background-color: red;
+    color: #ffffff
+}
+.logo{
+    align-self: center;
+    font-size: 20px;
+    text-wrap:normal;
+    text-align: center;
+    color: #ffffff;
+}
+.home_icon{
+ color:red;
+}
