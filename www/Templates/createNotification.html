@@ -1,0 +1,99 @@
+<ion-view>
+    <ion-content>
+        <p class="C_Notification">Create Notification</p>
+        <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>Enter Message (140 char max)</h4>
+    <textarea name="comment" id="comment-inform" ng-model="report.comment">
+      </textarea>
+            </div>
+        </div>
+
+
+
+        <div class="list">
+
+            <label class="item item-radio">
+                <input type="radio" name="group">
+                <div class="item-content">
+                    sms text delivery
+                </div>
+                <i class="radio-icon ion-checkmark"></i>
+            </label><label class="item item-radio">
+            <input type="radio" name="group">
+            <div class="item-content">
+                Voice delivery
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+        </label>
+        </div>
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Target Location Type
+                </div>
+                <select>
+                    <option>Zip</option>
+                    <option selected>Country</option>
+                    <option>state</option>
+                    <option>National</option>
+                </select>
+
+            </label>
+
+        </div>
+
+
+        <div class="list">
+            <label class="item item-input">
+                <div class="input-label">
+                    <p>Enter Zip Code</p>
+                </div>
+                <input type="text" placeholder="enter zip" class="zip_text">
+            </label>
+        </div>
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    select state
+                </div>
+                <select>
+                    <option></option>
+                    <option selected></option>
+                    <option></option>
+                    <option></option>
+                </select>
+
+            </label>
+
+        </div>
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    select country
+                </div>
+                <select>
+                    <option></option>
+                    <option selected></option>
+                    <option></option>
+                    <option></option>
+                </select>
+
+            </label>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-block buttonSignIn" ui-sref="notificationConfirmation">
+                    submit
+                </button>
+            </div>
+        </div>
+            </div>
+
+    </ion-content>
+</ion-view>

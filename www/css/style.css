@@ -37,3 +37,32 @@
 .home_icon{
  color:red;
 }
+
+.C_Notification{
+    text-align: center;
+    text-decoration:underline;
+    font-family: serif;
+    font-size: x-large;
+    margin-top: 30px;
+}
+.scroll {
+    height: 100%;
+}
+
+#comment-inform {
+    background-color: #f6f3f4;
+    width: 100%;
+    height: 80px;
+}
+
+.zip_text{
+
+}
+.zip_text > input{
+    border-color: #111111;
+}
+.notify_confirm{
+    text-align: center;
+    font-family: serif;
+    font-size: larger;
+}

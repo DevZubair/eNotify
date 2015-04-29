@@ -65,6 +65,22 @@ eNotifyModule.config(function($stateProvider,$urlRouterProvider){
         url: '/homepage',
         templateUrl: 'Templates/userHomePage.html'
       })
+      .state('createNotification', {
+          url: '/createNotification',
+          templateUrl: 'Templates/createNotification.html'
+      })
+      .state('notificationConfirmation', {
+          url: '/notificationConfirmation',
+          templateUrl: 'Templates/notificationConfirmationPage.html'
+      })
+      .state('viewNotification', {
+          url: '/viewNotification',
+          templateUrl: 'Templates/viewNotification.html'
+      })
+      .state('viewProfile', {
+          url: '/viewProfile',
+          templateUrl: 'Templates/viewProfile.html'
+      })
 
 
 });
