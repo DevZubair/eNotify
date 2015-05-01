@@ -50,36 +50,49 @@ eNotifyModule.config(function($stateProvider,$urlRouterProvider){
 
       .state('login', {
         url: '/',
-        templateUrl: 'Templates/login.html'
+        templateUrl: 'Templates/login.html',
+        controller:'loginController'
       })
 
       .state('Register', {
         url: '/register',
-        templateUrl: 'Templates/Registration.html'
+        templateUrl: 'Templates/Registration.html',
+        controller:'registrationController'
       })
       .state('confirmation', {
         url: '/confirmation',
-        templateUrl: 'Templates/registrationConfirmation.html'
+        templateUrl: 'Templates/registrationConfirmation.html',
+        controller:'registrationConfirmationController'
       })
       .state('homePage', {
         url: '/homepage',
-        templateUrl: 'Templates/userHomePage.html'
+        templateUrl: 'Templates/userHomePage.html',
+        controller:'userHomeController'
       })
       .state('createNotification', {
           url: '/createNotification',
-          templateUrl: 'Templates/createNotification.html'
+          templateUrl: 'Templates/createNotification.html',
+          controller:'createNotification'
       })
       .state('notificationConfirmation', {
           url: '/notificationConfirmation',
-          templateUrl: 'Templates/notificationConfirmationPage.html'
+          templateUrl: 'Templates/notificationConfirmationPage.html',
+          controller:'notificationConfirmationController'
       })
       .state('viewNotification', {
           url: '/viewNotification',
-          templateUrl: 'Templates/viewNotification.html'
+          templateUrl: 'Templates/viewNotification.html',
+          controller:'viewNotificationController'
       })
       .state('viewProfile', {
           url: '/viewProfile',
-          templateUrl: 'Templates/viewProfile.html'
+          templateUrl: 'Templates/viewProfile.html',
+          controller:'viewProfileController'
+      })
+      .state('viewPandingApproval', {
+          url: '/viewApproval',
+          templateUrl: 'Templates/viewPandingApproval.html',
+          controller:'viewPandingApprovalController'
       })
 
 

@@ -17,24 +17,24 @@
         <div class="list">
             <label class="item item-input item-stacked-label">
 
-                <input type="text" placeholder="FirstName">
+                <input type="text" placeholder="FirstName" ng-model="firstName">
             </label>
 
             <label class="item item-input item-stacked-label">
 
-                <input type="text" placeholder="LastName">
+                <input type="text" placeholder="LastName" ng-model="lastName">
             </label>
 
             <label class="item item-input item-stacked-label">
 
-                <input type="text" placeholder="UserName">
+                <input type="text" placeholder="UserName" ng-model="Username">
             </label>
             <label class="item item-input item-stacked-label">
-                <input type="text" placeholder="Phone">
+                <input type="text" placeholder="Phone" ng-model="phoneNumber">
 
             </label>
             <label class="item item-input item-stacked-label">
-                <input type="text" placeholder="Password">
+                <input type="text" placeholder="Password" ng-model="Password">
 
             </label>
         </div>
@@ -46,12 +46,12 @@
 
                     <li class="item item-checkbox">
                         <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="Notifier">
                         </label>
                         Notifier:
                     </li><li class="item item-checkbox">
                     <label class="checkbox">
-                        <input type="checkbox">
+                        <input type="checkbox" ng-model="Approval">
                     </label>
                     Approver:
                 </li>
@@ -61,7 +61,7 @@
 
         <div class="row">
             <div class="col">
-                <button class="button button-block buttonSignIn" ui-sref="confirmation">
+                <button class="button button-block buttonSignIn" ui-sref="confirmation" ng-click="registrationUser()">
                     submit
                 </button>
             </div>

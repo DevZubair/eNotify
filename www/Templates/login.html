@@ -17,14 +17,14 @@
 
         <div class="list">
             <label class="item item-input">
-                <input type="text" placeholder="Username">
+                <input type="text" placeholder="Username" ng-model="Username">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="Password">
+                <input type="text" placeholder="Password" ng-model="userPassword">
             </label>
             <div class="row">
                 <div class="col">
-                    <button class="button button-block buttonSignIn" ui-sref="homePage">
+                    <button class="button button-block buttonSignIn" ui-sref="homePage" ng-click="userLogin()">
                         submit
                     </button>
                 </div>
