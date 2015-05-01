@@ -16,26 +16,15 @@
             </div>
         </ion-scroll>
         <ion-scroll direction="xy" style="height: 100%" zooming="true" on-scroll="scrollMirror('list', 'head')" delegate-handle="list">
+           <div ng-repeat="notify in viewNotificationData">
             <div class="item row row-item min-705">
-                <div class="col col-left col-20 min-180">101</div>
-                <div class="col col-right col-sep min-75">This is test <br/>notification</div>
-                <div class="col col-right col-sep min-75">24/april/2015<br/>10:45</div>
-                <div class="col col-right col-sep min-75"> john damm</div>
-            </div>
-            <div class="item row row-item min-705">
-                <div class="col col-left col-20 min-180">102</div>
-                <div class="col col-right col-sep min-75">This is test <br/>notification</div>
-                <div class="col col-right col-sep min-75">24/april/2015<br/>10:45</div>
-                <div class="col col-right col-sep min-75"> john damm</div>
-            </div>
-            <div class="item row row-item min-705">
-                <div class="col col-left col-20 min-180">102</div>
-                <div class="col col-right col-sep min-75">This is test <br/>notification</div>
-                <div class="col col-right col-sep min-75">24/april/2015<br/>10:45</div>
-                <div class="col col-right col-sep min-75"> john damm</div>
+                <div class="col col-left col-20 min-180">{{notify.id}}</div>
+                <div class="col col-right col-sep min-75">{{notify.message}}</div>
+                <div class="col col-right col-sep min-75">{{notify.createdTs}}</div>
+                <div class="col col-right col-sep min-75">{{notify.createdBy.name}}</div>
             </div>
 
-
+</div>
         </ion-scroll>
     </ion-content>
 

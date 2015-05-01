@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <h4>Enter Message (140 char max)</h4>
-    <textarea name="comment" id="comment-inform" ng-model="report.comment">
+    <textarea name="comment" id="comment-inform" ng-model="notificationData.comment">
       </textarea>
             </div>
         </div>
@@ -15,13 +15,13 @@
         <div class="list">
 
             <label class="item item-radio">
-                <input type="radio" name="group">
+                <input type="checkbox" name="group" ng-model="notificationData.textDelivery">
                 <div class="item-content">
                     sms text delivery
                 </div>
                 <i class="radio-icon ion-checkmark"></i>
             </label><label class="item item-radio">
-            <input type="radio" name="group">
+            <input type="checkbox" name="group" ng-model="notificationData.voiceDelivery">
             <div class="item-content">
                 Voice delivery
             </div>
@@ -30,15 +30,15 @@
         </div>
 
         <div class="list">
-            <label class="item item-input item-select">
+            <label class="item item-input item-select" ng-model="notificationData.locationType">
                 <div class="input-label">
                     Target Location Type
                 </div>
-                <select>
-                    <option>Zip</option>
-                    <option selected>Country</option>
-                    <option>state</option>
-                    <option>National</option>
+                <select ng-model="selectValue.selectOption" ng-change="select(); selectFunction()">
+                    <option value="Zip">Zip</option>
+                    <option value="County">County</option>
+                    <option value="state">state</option>
+                    <option value="National">National</option>
                 </select>
 
             </label>
@@ -47,36 +47,33 @@
 
 
         <div class="list">
-            <label class="item item-input">
+            <label class="item item-input" ng-show="Zip" >
                 <div class="input-label">
                     <p>Enter Zip Code</p>
                 </div>
-                <input type="text" placeholder="enter zip" class="zip_text">
+                <input type="text" placeholder="enter zip" class="zip_text" ng-model="notificationData.zip">
             </label>
         </div>
 
         <div class="list">
-            <label class="item item-input item-select">
+            <label class="item item-input item-select" ng-show="state">
                 <div class="input-label">
                     select state
                 </div>
-                <select>
-                    <option></option>
-                    <option selected></option>
-                    <option></option>
-                    <option></option>
+                <select ng-options="value as value for value in allstates" ng-model="value"  ng-change="allCounty(value)">
+
                 </select>
 
             </label>
 
         </div>
         <div class="list">
-            <label class="item item-input item-select">
+            <label class="item item-input item-select" ng-show="County">
                 <div class="input-label">
-                    select country
+                    select county
                 </div>
-                <select>
-                    <option ng-repeat="country in countrylist"></option>
+                <select ng-options="test as test for test in allCountyies" ng-model="test">
+                    <option></option>
 
                 </select>
 
@@ -86,7 +83,7 @@
 
         <div class="row">
             <div class="col">
-                <button class="button button-block buttonSignIn" ui-sref="notificationConfirmation">
+                <button class="button button-block buttonSignIn"  ng-click="createNotification()">
                     submit
                 </button>
             </div>
