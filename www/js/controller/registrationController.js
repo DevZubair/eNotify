@@ -1,4 +1,4 @@
-eNotifyModule.controller('registrationController', ['$scope', '$state','$rootScope','$http', function($scope, $state,$rootScope,$http) {
+eNotifyModule.controller('registrationController', ['$scope', '$state','$rootScope','$http','$ionicPopup','urlList', function($scope, $state,$rootScope,$http,$ionicPopup,urlList) {
 
     $scope.firstName='';
     $scope.lastName='';
@@ -11,8 +11,11 @@ eNotifyModule.controller('registrationController', ['$scope', '$state','$rootSco
 
     $scope.actualRole='';
 
+    $scope.factoryURL=urlList.getAllURLS;
 
     $scope.registrationUser = function() {
+
+
         if($scope.registerationData.Notifier==true){
             $scope.actualRole='NOTIFIER';
         }
@@ -24,23 +27,42 @@ eNotifyModule.controller('registrationController', ['$scope', '$state','$rootSco
             $scope.actualRole='';
         }
 
-        $http.post('http://tasnotifier-env.elasticbeanstalk.com/utils/register', {
+        var url=$scope.factoryURL.registrationURL;
 
-            name: $scope.registerationData.firstName + $scope.registerationData.lastName,
-            phone: $scope.registerationData.phoneNumber,
-            username: $scope.registerationData.Username,
-            password: $scope.registerationData.Password,
-            roles: $scope.actualRole
+        $http({
+            method: 'POST',
+            url: url,
+
+            data: {
+                name : $scope.registerationData.firstName + '' + $scope.registerationData.lastName,
+                phone : $scope.registerationData.phoneNumber,
+                username :  $scope.registerationData.Username,
+                password :  $scope.registerationData.Password,
+                roles  :  $scope.actualRole
+
+            }
+
 
         }).success(function(data){
+
             if(data.errror_code=='SYSTEM_ERROR'){
-                alert('Username unavailable. Please choose a different username');
+                /*alert('Username unavailable. Please choose a different username');*/
+                $ionicPopup.alert({
+                    template:'Username unavailable. Please choose a different username'
+                });
             }
             else{
+                console.log('Success Login');
                 $state.go('login');
             }
+
         }).error(function(err){
-            alert(err);
+            console.log(err);
         })
+
+
+
     }
+
+
 }]);

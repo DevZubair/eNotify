@@ -1,10 +1,12 @@
-eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope','$http', function($scope, $state,$rootScope,$http) {
+eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope','$http','$ionicPopup','urlList', function($scope, $state,$rootScope,$http,$ionicPopup,urlList) {
 
     $scope.comment='';
     $scope.textDelivery='';
     $scope.voiceDelivery='';
     $scope.locationType='';
     $scope.zip='';
+    $scope.value='';
+    $scope.county='';
 
     $scope.selectOption='';
     $scope.notificationData = {};
@@ -13,13 +15,27 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
     $scope.selectValue={};
 
 
+    $scope.id='';
+    $scope.message='';
+    $scope.textNotification='';
+    $scope.voiceNotification='';
+    $scope.recipientsCount='';
+    $scope.createdTs='';
+
+
     $scope.allstates = [];
     $scope.allCountyies = [];
-
+    $scope.location='';
     $scope.value='';
+    $scope.locationSelection='';
+
+
+    $scope.factoryURL=urlList.getAllURLS;
+
+
 
     $scope.selectFunction=function(){
-        $http.get('http://tasnotifier-env.elasticbeanstalk.com/utils/states')
+        $http.get($scope.factoryURL.statesURL)
             .success(function(data){
                 $scope.allstates=data;
                 console.log(data);
@@ -30,7 +46,7 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
 
 
     $scope.allCounty = function(value){
-        $http.get('http://tasnotifier-env.elasticbeanstalk.com/utils/counties?state='+value)
+        $http.get($scope.factoryURL.countyURL+value)
             .success(function(data){
                 $scope.allCountyies = data;
             }).error(function(){
@@ -68,17 +84,60 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
 
     $scope.createNotification=function() {
 
-        $http.post('http://tasnotifier-env.elasticbeanstalk.com/api/notification', {
-            message:$scope.notificationData.comment,
-            textNotification:$scope.notificationData.textDelivery,
-            voiceNotification:$scope.notificationData.voiceDelivery,
-            locationType:$scope.selectValue.selectOption,
-            location:$scope.notificationData.zip
+        if($scope.notificationData.zip!=undefined){
+            $scope.locationSelection=$scope.notification.zip
+        }
+        else if($scope.notificationData.value!=undefined){
+            $scope.locationSelection=$scope.notificationData.value
+        }
+        else if($scope.notificationData.county!=undefined){
+            $scope.locationSelection=$scope.notificationData.county
+        }
+
+
+
+        var url=$scope.factoryURL.createNotificationURL;
+
+        $http({
+            method: 'POST',
+            url: url,
+
+            data: {
+                message: $scope.notificationData.comment,
+                textNotification: $scope.notificationData.textDelivery,
+                voiceNotification: $scope.notificationData.voiceDelivery,
+                locationType: $scope.selectValue.selectOption,
+                location:  $scope.locationSelection
+
+            }
+
+
         }).success(function(data){
-            console.log(data);
+
+            $scope.id = data.id;
+            $scope.message=data.message;
+            $scope.textNotification=data.textNotification;
+            $scope.voiceNotification=data.voiceNotification;
+            $scope.recipientsCount=data.recipientsCount;
+            $scope.createdTs=data.createdTs;
+
+            if(data.errror_code=='SYSTEM_ERROR'){
+                /* alert('Username unavailable. Please choose a different username');*/
+                $ionicPopup.alert({
+                    template:'Username unavailable. Please choose a different username'
+                });
+            }
+            else{
+                console.log(data);
+            }
+
         }).error(function(err){
             console.log(err);
-        })
+        });
+
+
+        $state.go('notificationConfirmation');
+
     }
 
 }]);

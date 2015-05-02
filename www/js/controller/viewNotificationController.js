@@ -1,13 +1,27 @@
-eNotifyModule.controller('viewNotificationController', ['$scope', '$state','$http', function($scope, $state,$http) {
+eNotifyModule.controller('viewNotificationController', ['$scope', '$state','$http','urlList', function($scope, $state,$http,urlList) {
 
     $scope.viewNotificationData = [];
+    $scope.factoryURL=urlList.getAllURLS;
 
-    $http.get('http://tasnotifier-env.elasticbeanstalk.com/api/notification/')
-        .success(function(data){
-            $scope.viewNotificationData=data;
-            console.log(data);
-        }).error(function(err){
-            console.log(err);
-        })
+
+
+    var url=$scope.factoryURL.getNotificationURL;
+
+
+    $http({
+        method: 'GET',
+        url: url,
+        headers: {'Content-Type': 'application/json'}
+
+    }).success(function(data){
+
+        $scope.viewNotificationData=data;
+
+        console.log(data);
+
+    }).error(function(err){
+
+        console.log(err);
+    })
 
 }]);

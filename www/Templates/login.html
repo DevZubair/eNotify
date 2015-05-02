@@ -1,4 +1,4 @@
-<ion-view view-title="Home" hide-nav-bar="true">
+<ion-view view-title="eNotify" hide-nav-bar="true">
     <ion-content>
 
         <div class="bar bar-header bar-calm">
@@ -14,13 +14,19 @@
 
         </div>
 
+        <div class="row">
+         <div class="col">
+             <label ng-show="invalidPassowrd" style="color:red;">Invalid Password!!</label>
+         </div>
+
+        </div>
 
         <div class="list">
             <label class="item item-input">
-                <input type="text" placeholder="Username" ng-model="userData.Username">
+                <input type="text" type="text"  placeholder="Username" ng-model="userData.username">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="Password" ng-model="userData.userPassword">
+                <input type="password" placeholder="Password" ng-model="userData.password">
             </label>
             <div class="row">
                 <div class="col">

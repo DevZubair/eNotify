@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 var eNotifyModule=angular.module('eNotifyModule',
     [
-      'ionic'
+        'ionic'
+
 
 
     ]);
@@ -14,86 +15,108 @@ eNotifyModule.run(function($ionicPlatform) {
 
 
 
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+    $ionicPlatform.ready(function() {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
 
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        }
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
 
 
-  })
+    })
 
 
 
 
 });
 
-eNotifyModule.config(function($stateProvider,$urlRouterProvider){
+eNotifyModule.config(function($stateProvider,$urlRouterProvider,$httpProvider){
 
 
 
+    $urlRouterProvider.otherwise('/');
 
 
-  $urlRouterProvider.otherwise('/');
-
-
-  //Turn authenticate to true to enable security and authentication.
+    //Turn authenticate to true to enable security and authentication.
 
 
 
-  $stateProvider
+    $stateProvider
 
-      .state('login', {
-        url: '/',
-        templateUrl: 'Templates/login.html',
-        controller:'loginController'
-      })
+        .state('login', {
+            url: '/',
+            templateUrl: 'Templates/login.html',
+            controller:'loginController'
+        })
 
-      .state('Register', {
-        url: '/register',
-        templateUrl: 'Templates/Registration.html',
-        controller:'registrationController'
-      })
-      .state('confirmation', {
-        url: '/confirmation',
-        templateUrl: 'Templates/registrationConfirmation.html',
-        controller:'registrationConfirmationController'
-      })
-      .state('homePage', {
-        url: '/homepage',
-        templateUrl: 'Templates/userHomePage.html',
-        controller:'userHomeController'
-      })
-      .state('createNotification', {
-          url: '/createNotification',
-          templateUrl: 'Templates/createNotification.html',
-          controller:'createNotification'
-      })
-      .state('notificationConfirmation', {
-          url: '/notificationConfirmation',
-          templateUrl: 'Templates/notificationConfirmationPage.html',
-          controller:'notificationConfirmationController'
-      })
-      .state('viewNotification', {
-          url: '/viewNotification',
-          templateUrl: 'Templates/viewNotification.html',
-          controller:'viewNotificationController'
-      })
-      .state('viewProfile', {
-          url: '/viewProfile',
-          templateUrl: 'Templates/viewProfile.html',
-          controller:'viewProfileController'
-      })
-      .state('viewPandingApproval', {
-          url: '/viewApproval',
-          templateUrl: 'Templates/viewPandingApproval.html',
-          controller:'viewPandingApprovalController'
-      })
+        .state('Register', {
+            url: '/register',
+            templateUrl: 'Templates/Registration.html',
+            controller:'registrationController'
+        })
+        .state('confirmation', {
+            url: '/confirmation',
+            templateUrl: 'Templates/registrationConfirmation.html',
+            controller:'viewProfileController'
+        })
+        .state('homePage', {
+            url: '/homepage',
+            templateUrl: 'Templates/userHomePage.html',
+            controller:'userHomeController'
+        })
+        .state('createNotification', {
+            url: '/createNotification',
+            templateUrl: 'Templates/createNotification.html',
+            controller:'createNotification'
+        })
+        .state('notificationConfirmation', {
+            url: '/notificationConfirmation',
+            templateUrl: 'Templates/notificationConfirmationPage.html',
+            controller:'createNotification'
+        })
+        .state('viewNotification', {
+            url: '/viewNotification',
+            templateUrl: 'Templates/viewNotification.html',
+            controller:'viewNotificationController'
+        })
+        .state('viewProfile', {
+            url: '/viewProfile',
+            templateUrl: 'Templates/viewProfile.html',
+            controller:'viewProfileController'
+        })
+        .state('viewPendingApproval', {
+            url: '/viewApproval',
+            templateUrl: 'Templates/viewPendingApproval.html',
+            controller:'viewPendingApprovalController'
+        })
 
+
+}).controller('indexController', function ($scope,$state) {
+
+    $scope.optionValue='';
+
+
+    $scope.profileF=function(name){
+
+        if(name=="Profile")
+        {
+            $state.go('viewProfile');
+            $scope.optionValue='';
+        }
+        else if( name=="Logout"){
+            localStorage.clear();
+            $state.go('login');
+            $scope.optionValue='';
+        }
+        else{
+            $scope.optionValue='';
+        }
+
+
+    }
 
 });

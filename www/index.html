@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="eNotifyModule">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -20,7 +20,10 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
+
+
     <script src="js/app.js"></script>
+    <script src="js/Services/urlServices.js"></script>
 
     <script src="js/controller/loginController.js"></script>
 
@@ -28,13 +31,13 @@
     <!-- controller filer -->
 
     <script src="js/controller/createNotification.js"></script>
-    <script src="js/controller/notificationConfirmationController.js"></script>
+
     <script src="js/controller/registrationController.js"></script>
-    <script src="js/controller/registrationConfirmationController.js"></script>
+
     <script src="js/controller/userHomeController.js"></script>
     <script src="js/controller/viewNotificationController.js"></script>
     <script src="js/controller/viewprofileController.js"></script>
-    <script src="js/controller/viewPandingApprovalController.js"></script>
+    <script src="js/controller/viewPendingApprovalController.js"></script>
 
     <!--all controlller with names end  -->
 
@@ -44,7 +47,8 @@
 
 
   </head>
-  <body ng-app="eNotifyModule">
+
+  <body ng-controller="indexController">
   <ion-side-menus enable-menu-with-back-views="true">
 
 
@@ -53,7 +57,11 @@
 
 
         <ion-nav-buttons side="right">
-          <button class="sidebarcolor button button-icon ion-navicon" menu-toggle="right"></button>
+          <select class="button button-icon" ng-model="optionValue" ng-change="profileF(optionValue)">
+            <option class="button button-icon" style="background-color: #0a9ec7">Select</option>
+            <option class="button button-icon" style="background-color: #0a9ec7" value="Profile">Profile</option>
+            <option class="button button-icon" style="background-color: #0a9ec7" value="Logout">Logout</option>
+          </select>
         </ion-nav-buttons>
 
         <ion-nav-buttons side="left">

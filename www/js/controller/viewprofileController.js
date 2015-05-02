@@ -1,6 +1,11 @@
-eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http', function($scope, $state,$http) {
-$scope.profile = '';
-    $http.get('http://tasnotifier-env.elasticbeanstalk.com/api/tasuser/profile')
+eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','urlList', function($scope, $state,$http,urlList) {
+
+
+    $scope.profile = '';
+
+    $scope.factoryURL=urlList.getAllURLS;
+
+    $http.get( $scope.factoryURL.getProfileURL)
         .success(function(data){
             $scope.profile = data;
         }).error(function(err){

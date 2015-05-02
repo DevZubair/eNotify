@@ -1,41 +1,47 @@
-<ion-view>
+<ion-view view-title="eNotify">
 <ion-content>
 <br/>
     <p class="C_Notification">My Profile</p>
 <br/>
 
-  <div class="list card">
-    <div class="row item">
+  <div class="list list-inset">
+    <div class="row item item-input">
         <div class="col col-34">
             <p>Name</p>
         </div>
         <div class="col"></div>
         <div class="col col-50">{{profile.name}}</div>
     </div>
+      </div>
 
 
-
-    <div class="row item">
+  <div class="list list-inset">
+    <div class="row item item-input">
         <div class="col col-34">
             <p>Phone:</p>
         </div>
         <div class="col"></div>
         <div class="col col-50">{{profile.phone}}</div>
     </div>
-    <div class="row item">
+  </div>
+      <div class="list list-inset">
+    <div class="row item item-input">
         <div class="col col-34">
             <p>Roles:</p>
         </div>
         <div class="col"></div>
         <div class="col col-50">{{profile.actualRole}}</div>
     </div>
-    <div class="row item">
+      </div>
+      <div class="list list-inset">
+    <div class="row item item-input">
         <div class="col col-34">
             <p>Profile:</p>
         </div>
         <div class="col"></div>
-        <div class="col col-50">22/april/2015 10:15am</div>
+        <div class="col col-50">{{profile.createdTs}}</div>
     </div>
+  </div>
   </div>
 
 </ion-content>

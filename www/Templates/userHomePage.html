@@ -1,9 +1,17 @@
-<ion-view>
+<ion-view view-title="eNotify">
 <ion-content>
 
     <br/>
     <br/>
 
+
+    <div class="row">
+      <div class="col">
+          <p style="text-align: center; font-size: 18px; font-family: cursive">Welcome {{name}}</p>
+
+      </div>
+
+    </div>
     <div class="row">
         <div class="col">
 
@@ -15,14 +23,14 @@
                 View Notification
             </button>
 
-            <button class="button button-full buttonSignIn" ui-sref="viewPandingApproval">
+            <button class="button button-full buttonSignIn" ui-sref="viewPendingApproval">
                 View pending approval
             </button>
 
             <button class="button button-full buttonSignIn" ui-sref="viewProfile">
                 View Profile
             </button>
-            <button class="button button-full buttonSignIn" ui-sref="login">
+            <button class="button button-full buttonSignIn" ng-click="logout()">
                 logout
             </button>
 

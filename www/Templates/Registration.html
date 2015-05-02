@@ -14,26 +14,33 @@
             </div>
         </div>
 
+         <form  ng-app="eNotifyModule"  ng-controller="registrationController"
+                     name="myForm" novalidate></form>
         <div class="list">
             <label class="item item-input item-stacked-label">
-
+                <!--<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                 <span ng-show="myForm.user.$error.required">Username is required.</span>
+                    </span>-->
+                <span class="input-label">FirstName</span>
                 <input type="text" placeholder="FirstName" ng-model="registerationData.firstName">
             </label>
 
             <label class="item item-input item-stacked-label">
-
+                <span class="input-label">LastName</span>
                 <input type="text" placeholder="LastName" ng-model="registerationData.lastName">
             </label>
 
             <label class="item item-input item-stacked-label">
-
+               <span class="input-label">UserName</span>
                 <input type="text" placeholder="UserName" ng-model="registerationData.Username">
             </label>
             <label class="item item-input item-stacked-label">
-                <input type="text" placeholder="Phone" ng-model="registerationData.phoneNumber">
+                <span class="input-label">Phone</span>
+                <input type="text" maxlength="10" minlength="10" placeholder="Phone" ng-model="registerationData.phoneNumber">
 
             </label>
             <label class="item item-input item-stacked-label">
+                <span class="input-label">Password</span>
                 <input type="text" placeholder="Password" ng-model="registerationData.Password">
 
             </label>
