@@ -1,4 +1,4 @@
-eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$ionicSideMenuDelegate','$http','$ionicPopup','urlList', function($scope, $state,$rootScope,$ionicSideMenuDelegate,$http,$ionicPopup,urlList) {
+eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$ionicSideMenuDelegate','$http','$ionicPopup','urlList','ionicLoader','$ionicLoading', function($scope, $state,$rootScope,$ionicSideMenuDelegate,$http,$ionicPopup,urlList,ionicLoader,$ionicLoading) {
 
     $scope.username='';
     $scope.password='';
@@ -13,6 +13,8 @@ eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$i
 
 
     $scope.userLogin = function(){
+
+        ionicLoader.show($ionicLoading);
 
         var url=$scope.factoryURL.hostURL + 'login';
 
@@ -38,6 +40,7 @@ eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$i
             }
             else{
                 console.log(data);
+                ionicLoader.hide($ionicLoading);
                 $state.go('homePage');
             }
 
@@ -45,6 +48,8 @@ eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$i
 
 
         }).error(function (err) {
+
+            ionicLoader.hide($ionicLoading);
             $scope.invalidPassowrd=true;
             console.log(err);
 
@@ -59,10 +64,6 @@ eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$i
     };
 
 
-
-    $scope.toggleLeft = function() {
-        $ionicSideMenuDelegate.toggleLeft();
-    };
 
 
 }]);

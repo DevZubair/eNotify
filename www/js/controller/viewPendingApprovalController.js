@@ -2,8 +2,8 @@ eNotifyModule.controller('viewPendingApprovalController', ['$scope', '$state','$
 
     $scope.viewPandingApproval = [];
     $scope.approveDeny=true;
-    $scope.approve=false;
-    $scope.deny=false;
+
+
 
     ionicLoader.show($ionicLoading);
     $scope.factoryURL=urlList.getAllURLS;
@@ -22,21 +22,57 @@ eNotifyModule.controller('viewPendingApprovalController', ['$scope', '$state','$
             console.log(data);
             ionicLoader.hide($ionicLoading);
         }).error(function(err){
-           console.log(err);
+            console.log(err);
             ionicLoader.hide($ionicLoading);
         });
 
 
-    $scope.approveDenyFunc=function(name){
+    $scope.approveDenyFunc=function(name,userData){
 
-        $scope.approveDeny=false;
+        ionicLoader.show($ionicLoading);
 
-        if(name=='approve'){
-            $scope.approve=true;
+
+        var approve_deny=document.getElementById(userData.id);
+        if(name=="approve")
+        {
+            $http.get($scope.factoryURL.hostURL + 'api/tasuser/' + userData.id + '/approve')
+
+                .success(function (data) {
+
+                    approve_deny.innerHTML='Approved!';
+                    approve_deny.style.color='green';
+                    ionicLoader.hide($ionicLoading);
+
+                }).error(function (err) {
+
+                    ionicLoader.hide($ionicLoading);
+
+                });
+
+
+
         }
-        else if(name=='deny'){
-            $scope.deny=true;
+        else if(name=="deny"){
+
+            $http.get($scope.factoryURL.hostURL + 'api/tasuser/' + userData.id + '/deny')
+
+                .success(function (data) {
+
+                    approve_deny.innerHTML='Deny!';
+                    approve_deny.style.color='red';
+                    ionicLoader.hide($ionicLoading);
+
+                }).error(function (err) {
+
+                    ionicLoader.hide($ionicLoading);
+
+                });
+
+
+
         }
+
+        userData.id=false;
 
 
     }
