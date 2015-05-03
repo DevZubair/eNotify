@@ -10,6 +10,7 @@
             <div class="item item-header item-positive row">
                 <div class="col col-33">Requested By</div>
                 <div class="col col-33">Requested time</div>
+                <div class="col"></div>
                 <div class="col col-33">Action</div>
             </div>
         </ion-scroll>
@@ -19,6 +20,7 @@
                 <div class="row">
                     <div class="col col-33">{{approval.username}}</div>
                     <div class="col col-33">{{approval.createdTs}}</div>
+                    <div class="col"></div>
                     <div class="col col-33">
 
                         <button ng-show="approveDeny" class="button button-assertive button-small" ng-click="approveDenyFunc('approve')">

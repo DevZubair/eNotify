@@ -23,3 +23,22 @@ eNotifyModule.factory('urlList',function() {
 
 
 });
+
+eNotifyModule.factory('ionicLoader', function() {
+
+
+    return {
+
+        show : function($ionicLoading) {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+        },
+        hide : function($ionicLoading){
+            $ionicLoading.hide();
+
+        }
+    };
+
+
+});

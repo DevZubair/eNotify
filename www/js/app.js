@@ -130,7 +130,9 @@ eNotifyModule.config(function($stateProvider,$urlRouterProvider,$httpProvider){
         }
         else{
             $scope.optionValue="Menu";
+
             $state.go('homePage');
+            location.reload();
         }
 
 

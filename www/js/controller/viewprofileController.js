@@ -1,5 +1,6 @@
-eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','urlList', function($scope, $state,$http,urlList) {
+eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','urlList','ionicLoader','$ionicLoading', function($scope, $state,$http,urlList,ionicLoader,$ionicLoading) {
 
+    ionicLoader.show($ionicLoading);
 
     $scope.profile = '';
 
@@ -9,9 +10,11 @@ eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','u
         .success(function(data){
             data.createdTs=new Date(data.createdTs);
             $scope.profile = data;
+            ionicLoader.hide($ionicLoading);
 
         }).error(function(err){
             console.log(err);
+            ionicLoader.hide($ionicLoading);
         })
 
 

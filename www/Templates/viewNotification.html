@@ -6,16 +6,14 @@
 <br/>
 
 
-        <ion-scroll direction="x" style="width: 100%" scrollbar-x="false" delegate-handle="head" zooming="true" on-scroll="scrollMirror('head', 'list')">
-            <div class="item item-header item-positive row">
+           <div class="item item-header item-positive row">
                 <div class="col col-10">ID</div>
                 <div class="col col-33">message</div>
                 <div class="col col-33">create time</div>
                 <div class="col col-33">create by</div>
 
             </div>
-        </ion-scroll>
-        <ion-scroll direction="xy" style="height: 100%" zooming="true" on-scroll="scrollMirror('list', 'head')" delegate-handle="list">
+
            <div ng-repeat="notify in viewNotificationData">
             <div class="row" style="border-bottom: 1px grey dashed">
                 <div class="col col-10">{{notify.id}}</div>
@@ -25,7 +23,7 @@
             </div>
 
 </div>
-        </ion-scroll>
+
     </ion-content>
 
 
