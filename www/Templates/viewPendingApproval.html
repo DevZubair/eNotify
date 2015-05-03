@@ -1,31 +1,42 @@
 <ion-view view-title="eNotify">
     <ion-content has-header="true" scroll="true">
 
+
+        <div class="row" style="border-bottom: dotted dodgerblue 1px">
+            <div class="col">
+                <p style="text-align: center; font-size: 16px; font-family: arial">Welcome,
+                    <span style="font-weight: 600;color: #000;">{{name}}</span></p>
+
+            </div>
+        </div>
+
+
+
         <h5 class="notify_confirm">View Pending Approval</h5>
 
         <br/>
 
 
            <div class="item item-header item-positive row">
-                <div class="col col-33">Requested By</div>
-                <div class="col col-33">Requested time</div>
-                <div class="col"></div>
-                <div class="col col-33">Action</div>
+                <div class="col">Requested By</div>
+                <div class="col col-offset-20">Date</div>
+
+                <div class="col">Action</div>
             </div>
 
 
             <div ng-repeat=" approval in viewPandingApproval ">
-                <div class="row" style="border-bottom: 1px grey dashed">
-                    <div class="col col-33">{{approval.username}}</div>
-                    <div class="col col-33">{{approval.createdTs}}</div>
-                    <div class="col"></div>
-                    <div class="col col-33">
+                <div class="row" style="border-bottom: 1px grey solid;padding-top: 0px; padding-bottom: 0px">
+                    <div class="col" style="border-right: 1px grey solid">{{approval.username}}</div>
+                    <div class="col" style="border-right: 1px grey solid">{{approval.createdTs}}</div>
+
+                    <div class="col" style="border-right: 1px grey solid">
 
                         <button ng-show="approval.id" class="button button-balanced" ng-click="approveDenyFunc('approve',approval)">
                             Approve
                         </button>
                         <br/>
-                        <button style="padding-right: 36px;" ng-show="approval.id" class="button button-assertive" ng-click="approveDenyFunc('deny',approval)">
+                        <button style="margin-top:2px;padding-right: 36px;" ng-show="approval.id" class="button button-assertive" ng-click="approveDenyFunc('deny',approval)">
                             Deny
                         </button>
 

@@ -4,7 +4,7 @@ eNotifyModule.controller('viewPendingApprovalController', ['$scope', '$state','$
     $scope.approveDeny=true;
 
 
-
+    $scope.name=localStorage.getItem("username");
     ionicLoader.show($ionicLoading);
     $scope.factoryURL=urlList.getAllURLS;
 

@@ -1,40 +1,76 @@
-<ion-view view-title="eNotify">
-<ion-content>
-
-    <br/>
-    <br/>
+<ion-view view-title="<img src='img/eNotify.png' style='width:90%;
+    height:50%;margin-top:15px;'></img>">
+    <ion-content>
 
 
-    <div class="row">
-      <div class="col">
-          <p style="text-align: center; font-size: 18px; font-family: cursive">Welcome {{name}}</p>
 
-      </div>
 
-    </div>
-    <div class="row">
-        <div class="col">
+        <div class="row" style="border-bottom: dotted dodgerblue 1px">
+            <div class="col">
+                <p style="text-align: center; font-size: 16px; font-family: arial">Welcome,
+                    <span style="font-weight: 600;color: #000;">{{name}}</span></p>
 
-            <button class="button button-full buttonSignIn" ui-sref="createNotification">
-                Create Notification
-            </button>
-
-            <button class="button button-full buttonSignIn" ui-sref="viewNotification">
-                View Notification
-            </button>
-
-            <button class="button button-full buttonSignIn" ui-sref="viewPendingApproval">
-                View pending approval
-            </button>
-
-            <button class="button button-full buttonSignIn" ui-sref="viewProfile">
-                View Profile
-            </button>
-            <button class="button button-full buttonSignIn" ng-click="logout()">
-                logout
-            </button>
-
+            </div>
         </div>
-    </div>
-</ion-content>
+
+
+
+        <div class="row">
+            <div class="col">
+
+                <button class="button button-full buttonSignIn" ui-sref="createNotification">
+
+                    <div class="row">
+                        <i class="col col-20 ion-ios-flag icons-class"></i>
+
+
+                        <span class="col span-class">Create Notification</span>
+                    </div>
+
+                </button>
+
+                <button class="button button-full buttonSignIn" ui-sref="viewNotification">
+
+                    <div class="row">
+                        <i class="col col-20 ion-eye icons-class"></i>
+
+
+                        <span class="col span-class"> View Notification</span>
+                    </div>
+
+                </button>
+
+                <button class="button button-full buttonSignIn" ui-sref="viewPendingApproval">
+                    <div class="row">
+                        <i class="col col-20 ion-load-a icons-class"></i>
+
+
+                        <span class="col span-class"> View Pending Approvals</span>
+                    </div>
+
+
+                </button>
+
+                <button class="button button-full buttonSignIn" ui-sref="viewProfile">
+                    <div class="row">
+                        <i class="col col-20 ion-ios-person icons-class"></i>
+
+
+                        <span class="col span-class">View Profile</span>
+                    </div>
+
+                </button>
+                <button class="button button-full buttonSignIn" ng-click="logout()">
+                    <div class="row">
+                        <i class="col col-20 ion-log-out icons-class"></i>
+
+
+                        <span class="col span-class">Logout</span>
+                    </div>
+
+                </button>
+
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

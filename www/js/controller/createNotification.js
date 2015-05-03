@@ -1,5 +1,9 @@
 eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope','$http','$ionicPopup','urlList', function($scope, $state,$rootScope,$http,$ionicPopup,urlList) {
 
+
+
+
+    $scope.name=localStorage.getItem("username");
     $scope.comment='';
     $scope.textDelivery='';
     $scope.voiceDelivery='';

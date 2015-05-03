@@ -1,5 +1,8 @@
 eNotifyModule.controller('viewNotificationController', ['$scope', '$state','$http','urlList','ionicLoader','$ionicLoading', function($scope, $state,$http,urlList,ionicLoader,$ionicLoading) {
 
+
+    $scope.name=localStorage.getItem("username");
+
     $scope.viewNotificationData = [];
     $scope.factoryURL=urlList.getAllURLS;
 

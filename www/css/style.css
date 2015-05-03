@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 
 .logo_image{
-    margin-top: 30px;
+    margin-top: 70px;
     align-self: center;
     font-size: 20px;
     text-wrap:normal;
@@ -9,17 +9,31 @@
     color: #ffffff;
 }
 .logo_image > img{
-    width:150%;
-    height:150%;
+    width:40%;
+    height:40%;
 
 }
 .buttonSignIn{
     font-family: inherit;
-    background-color: #3061be;
+    background-color: #196ec9;
     color: #ffffff;
     font-weight: 500;
+    height: 54px;
+    border-radius: 10px;
 }
 .buttonSignIn:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.buttonSignIns{
+    font-family: inherit;
+    background-color: rgba(98, 190, 52, 0.99);
+    color: #ffffff;
+    font-weight: 500;
+    height: 54px;
+    border-radius: 10px;
+}
+.buttonSignIns:hover{
     color: #fff;
     text-decoration: none;
 }
@@ -40,7 +54,7 @@
 
 .C_Notification{
     text-align: center;
-    text-decoration:underline;
+    color: rgb(13, 23, 93);
     font-family: serif;
     font-size: x-large;
     margin-top: 30px;
@@ -64,5 +78,14 @@
 .notify_confirm{
     text-align: center;
     font-family: serif;
-    font-size: larger;
+    font-size: 22px;
+    color: rgb(13, 23, 93);
+    margin-top: 30px;
+}
+.icons-class{
+    font-size: 25px;
+    text-align: left
+}
+.span-class{
+    text-align: left;
 }

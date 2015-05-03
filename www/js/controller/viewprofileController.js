@@ -1,7 +1,7 @@
 eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','urlList','ionicLoader','$ionicLoading', function($scope, $state,$http,urlList,ionicLoader,$ionicLoading) {
 
     ionicLoader.show($ionicLoading);
-
+    $scope.name=localStorage.getItem("username");
     $scope.profile = '';
 
     $scope.factoryURL=urlList.getAllURLS;
