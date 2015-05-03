@@ -14,7 +14,7 @@ eNotifyModule.controller('loginController', ['$scope', '$state','$rootScope','$i
 
     $scope.userLogin = function(){
 
-        var url=$scope.factoryURL.loginURL;
+        var url=$scope.factoryURL.hostURL + 'login';
 
         $http({
             method: 'POST',

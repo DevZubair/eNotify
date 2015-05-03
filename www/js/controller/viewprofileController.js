@@ -5,7 +5,7 @@ eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','u
 
     $scope.factoryURL=urlList.getAllURLS;
 
-    $http.get( $scope.factoryURL.getProfileURL)
+    $http.get($scope.factoryURL.hostURL + 'api/tasuser/profile')
         .success(function(data){
             $scope.profile = data;
         }).error(function(err){

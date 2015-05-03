@@ -36,12 +36,12 @@
             </label>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Phone</span>
-                <input type="text" maxlength="10" minlength="10" placeholder="Phone" ng-model="registerationData.phoneNumber">
+                <input type="text" maxlength="10" placeholder="Phone" ng-model="registerationData.phoneNumber">
 
             </label>
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Password</span>
-                <input type="text" placeholder="Password" ng-model="registerationData.Password">
+                <input type="password" placeholder="Password" ng-model="registerationData.Password">
 
             </label>
         </div>
@@ -55,12 +55,12 @@
                         <label class="checkbox">
                             <input type="checkbox" ng-model="registerationData.Notifier">
                         </label>
-                        Notifier:
+                        Notifier
                     </li><li class="item item-checkbox">
                     <label class="checkbox">
                         <input type="checkbox" ng-model="registerationData.Approval">
                     </label>
-                    Approver:
+                    Approver
                 </li>
                 </ul>
             </div>
@@ -68,8 +68,8 @@
 
         <div class="row">
             <div class="col">
-                <button class="button button-block buttonSignIn" ui-sref="confirmation" ng-click="registrationUser()">
-                    submit
+                <button class="button button-block buttonSignIn" ng-click="registrationUser()">
+                    Submit
                 </button>
             </div>
         </div>

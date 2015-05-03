@@ -5,7 +5,7 @@ eNotifyModule.controller('viewNotificationController', ['$scope', '$state','$htt
 
 
 
-    var url=$scope.factoryURL.getNotificationURL;
+    var url=$scope.factoryURL.hostURL + 'api/notification';
 
 
     $http({
@@ -16,6 +16,9 @@ eNotifyModule.controller('viewNotificationController', ['$scope', '$state','$htt
     }).success(function(data){
 
         $scope.viewNotificationData=data;
+for(var i=0;i<$scope.viewNotificationData.length;i++){
+    $scope.viewNotificationData[i].createdTs=new Date($scope.viewNotificationData[i].createdTs);
+}
 
         console.log(data);
 

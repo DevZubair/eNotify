@@ -23,11 +23,14 @@ eNotifyModule.controller('registrationController', ['$scope', '$state','$rootSco
         {
             $scope.actualRole='APPROVER';
         }
+        else if($scope.registerationData.Notifier==true && $scope.registerationData.Approval==true){
+            $scope.actualRole='NOTIFIER, APPROVER';
+        }
         else{
             $scope.actualRole='';
         }
 
-        var url=$scope.factoryURL.registrationURL;
+        var url=$scope.factoryURL.hostURL + 'utils/register' ;
 
         $http({
             method: 'POST',
@@ -45,19 +48,20 @@ eNotifyModule.controller('registrationController', ['$scope', '$state','$rootSco
 
         }).success(function(data){
 
-            if(data.errror_code=='SYSTEM_ERROR'){
-                /*alert('Username unavailable. Please choose a different username');*/
-                $ionicPopup.alert({
-                    template:'Username unavailable. Please choose a different username'
-                });
-            }
-            else{
-                console.log('Success Login');
-                $state.go('login');
-            }
+            $rootScope.profile=data;
+            console.log('Success Login');
+            $state.go('registrationConfirmation');
+
+
 
         }).error(function(err){
             console.log(err);
+            if(err.errror_code=='SYSTEM_ERROR'){
+                /*alert('Username unavailable. Please choose a different username');*/
+                $ionicPopup.alert({
+                    template:err.error_message
+                });
+            }
         })
 
 

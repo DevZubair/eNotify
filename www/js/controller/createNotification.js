@@ -5,22 +5,16 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
     $scope.voiceDelivery='';
     $scope.locationType='';
     $scope.zip='';
-    $scope.value='';
+    $scope.stateValue='';
     $scope.county='';
 
     $scope.selectOption='';
     $scope.notificationData = {};
+    $scope.notificationData.textDelivery=false;
+    $scope.notificationData.voiceDelivery=false;
 
     $scope.acutalDelivery = {};
     $scope.selectValue={};
-
-
-    $scope.id='';
-    $scope.message='';
-    $scope.textNotification='';
-    $scope.voiceNotification='';
-    $scope.recipientsCount='';
-    $scope.createdTs='';
 
 
     $scope.allstates = [];
@@ -35,7 +29,7 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
 
 
     $scope.selectFunction=function(){
-        $http.get($scope.factoryURL.statesURL)
+        $http.get($scope.factoryURL.hostURL + 'utils/states')
             .success(function(data){
                 $scope.allstates=data;
                 console.log(data);
@@ -46,7 +40,7 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
 
 
     $scope.allCounty = function(value){
-        $http.get($scope.factoryURL.countyURL+value)
+        $http.get($scope.factoryURL.hostURL +'utils/counties?state='+value)
             .success(function(data){
                 $scope.allCountyies = data;
             }).error(function(){
@@ -82,24 +76,29 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
         }
     };
 
+
+
     $scope.createNotification=function() {
 
         if($scope.notificationData.zip!=undefined){
-            $scope.locationSelection=$scope.notification.zip
+            $scope.locationSelection=$scope.notificationData.zip
         }
-        else if($scope.notificationData.value!=undefined){
-            $scope.locationSelection=$scope.notificationData.value
+        else if($scope.notificationData.stateValue!=undefined){
+            $scope.locationSelection=$scope.notificationData.stateValue
         }
         else if($scope.notificationData.county!=undefined){
             $scope.locationSelection=$scope.notificationData.county
         }
+        else{
+            $scope.locationSelection="National"
+        }
 
 
 
-        var url=$scope.factoryURL.createNotificationURL;
+        var url=$scope.factoryURL.hostURL + 'api/notification/create?message=' + $scope.notificationData.comment + '&locationType=' + $scope.selectValue.selectOption + '&location=' + $scope.locationSelection + '&textNotification=' + $scope.notificationData.textDelivery + '&voiceNotification=' + $scope.notificationData.voiceDelivery;
 
         $http({
-            method: 'POST',
+            method: 'GET',
             url: url,
 
             data: {
@@ -114,12 +113,15 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
 
         }).success(function(data){
 
-            $scope.id = data.id;
-            $scope.message=data.message;
-            $scope.textNotification=data.textNotification;
-            $scope.voiceNotification=data.voiceNotification;
-            $scope.recipientsCount=data.recipientsCount;
-            $scope.createdTs=data.createdTs;
+            $rootScope.id = data.id;
+            $rootScope.message=data.message;
+            $rootScope.textNotification=data.textNotification;
+            $rootScope.voiceNotification=data.voiceNotification;
+            $rootScope.recipientsCount=data.recipientsCount;
+            $rootScope.createdTs=new Date(data.createdTs);
+            $rootScope.locationTypes=$scope.selectValue.selectOption;
+            $rootScope.locations= $scope.locationSelection;
+
 
             if(data.errror_code=='SYSTEM_ERROR'){
                 /* alert('Username unavailable. Please choose a different username');*/
@@ -129,6 +131,7 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
             }
             else{
                 console.log(data);
+                $state.go('notificationConfirmation');
             }
 
         }).error(function(err){
@@ -136,7 +139,7 @@ eNotifyModule.controller('createNotification', ['$scope', '$state','$rootScope',
         });
 
 
-        $state.go('notificationConfirmation');
+
 
     }
 

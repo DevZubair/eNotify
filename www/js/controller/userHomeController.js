@@ -1,4 +1,4 @@
-eNotifyModule.controller('userHomeController', ['$scope', '$state','$rootScope','urlList', function($scope, $state,$rootScope,urlList) {
+eNotifyModule.controller('userHomeController', ['$scope', '$state','$rootScope','urlList','$ionicPopup','$http', function($scope, $state,$rootScope,urlList,$ionicPopup,$http) {
 
     $scope.name=localStorage.getItem("username");
 
@@ -7,8 +7,27 @@ eNotifyModule.controller('userHomeController', ['$scope', '$state','$rootScope',
 
     $scope.logout= function () {
 
-        localStorage.clear();
-        $state.go('login');
+
+        var url=$scope.factoryURL.hostURL + 'logout';
+
+        $http({
+            method: 'GET',
+            url: url
+
+
+        }).success(function(data){
+
+            localStorage.clear();
+            $state.go('login');
+
+        }).error(function (err) {
+
+            $ionicPopup.alert({
+                template:'Could not Logout'
+            });
+        });
+        
+
 
     };
 

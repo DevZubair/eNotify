@@ -11,7 +11,7 @@ var eNotifyModule=angular.module('eNotifyModule',
 
     ]);
 
-eNotifyModule.run(function($ionicPlatform) {
+eNotifyModule.run(function($ionicPlatform,$http) {
 
 
 
@@ -27,16 +27,20 @@ eNotifyModule.run(function($ionicPlatform) {
         }
 
 
-    })
+    });
 
 
 
 
 });
 
+
+
 eNotifyModule.config(function($stateProvider,$urlRouterProvider,$httpProvider){
 
 
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
 
     $urlRouterProvider.otherwise('/');
 
@@ -48,47 +52,56 @@ eNotifyModule.config(function($stateProvider,$urlRouterProvider,$httpProvider){
     $stateProvider
 
         .state('login', {
+            cache:false,
             url: '/',
             templateUrl: 'Templates/login.html',
             controller:'loginController'
         })
 
         .state('Register', {
+            cache:false,
             url: '/register',
             templateUrl: 'Templates/Registration.html',
             controller:'registrationController'
         })
-        .state('confirmation', {
+        .state('registrationConfirmation', {
+
             url: '/confirmation',
             templateUrl: 'Templates/registrationConfirmation.html',
-            controller:'viewProfileController'
+            controller:'registrationController'
         })
         .state('homePage', {
+            cache:false,
             url: '/homepage',
             templateUrl: 'Templates/userHomePage.html',
             controller:'userHomeController'
         })
         .state('createNotification', {
+            cache:false,
             url: '/createNotification',
             templateUrl: 'Templates/createNotification.html',
             controller:'createNotification'
         })
         .state('notificationConfirmation', {
+
             url: '/notificationConfirmation',
             templateUrl: 'Templates/notificationConfirmationPage.html',
             controller:'createNotification'
         })
         .state('viewNotification', {
+            cache:false,
             url: '/viewNotification',
             templateUrl: 'Templates/viewNotification.html',
             controller:'viewNotificationController'
         })
         .state('viewProfile', {
+            cache:false,
             url: '/viewProfile',
             templateUrl: 'Templates/viewProfile.html',
             controller:'viewProfileController'
         })
         .state('viewPendingApproval', {
+            cache:false,
             url: '/viewApproval',
             templateUrl: 'Templates/viewPendingApproval.html',
             controller:'viewPendingApprovalController'
@@ -105,15 +118,15 @@ eNotifyModule.config(function($stateProvider,$urlRouterProvider,$httpProvider){
         if(name=="Profile")
         {
             $state.go('viewProfile');
-            $scope.optionValue='';
+
         }
         else if( name=="Logout"){
             localStorage.clear();
             $state.go('login');
-            $scope.optionValue='';
+
         }
         else{
-            $scope.optionValue='';
+            $state.go('homePage');
         }
 
 

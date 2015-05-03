@@ -3,93 +3,98 @@
 
         <p class="C_Notification">Create Notification</p>
         <div class="container">
-        <div class="row">
-            <div class="col">
-                <h4>Enter Message (140 char max)</h4>
-    <textarea name="comment" id="comment-inform" ng-model="notificationData.comment">
+            <div class="row">
+                <div class="col">
+                    <h4>Enter Message (140 char max)</h4>
+    <textarea name="comment" maxlength="140" id="comment-inform" ng-model="notificationData.comment">
       </textarea>
+                </div>
+            </div>
+
+
+
+            <div class="list">
+
+                <ul class="list">
+
+                    <li class="item item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" ng-model="notificationData.textDelivery">
+                        </label>
+                        SMS Text Delivery
+                    </li><li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="notificationData.voiceDelivery">
+                    </label>
+                    Voice delivery
+                </li>
+
+                </ul>
+
+
+
+            </div>
+
+            <div class="list">
+                <label class="item item-input item-select" ng-model="notificationData.locationType">
+                    <div class="input-label">
+                        Target Location Type
+                    </div>
+                    <select ng-model="selectValue.selectOption" ng-change="select(); selectFunction()">
+                        <option value="Zip">Zip</option>
+                        <option value="County">County</option>
+                        <option value="state">state</option>
+                        <option value="National">National</option>
+                    </select>
+
+                </label>
+
+            </div>
+
+
+            <div class="list">
+                <label class="item item-input" ng-show="Zip" >
+                    <div class="input-label">
+                        <p>Enter Zip Code</p>
+                    </div>
+                    <input type="text" placeholder="enter zip" class="zip_text" ng-model="notificationData.zip">
+                </label>
+            </div>
+
+            <div class="list">
+                <label class="item item-input item-select" ng-show="state">
+                    <div class="input-label">
+                        Select State
+                    </div>
+                    <select ng-options="stateValue as stateValue for stateValue in allstates" ng-model="notificationData.stateValue"  ng-change="allCounty(notificationData.stateValue)">
+
+                    </select>
+
+                </label>
+
+            </div>
+            <div class="list">
+                <label class="item item-input item-select" ng-show="County">
+                    <div class="input-label">
+                        Select County
+                    </div>
+                    <select ng-options="county as county for county in allCountyies" ng-model="notificationData.county">
+                        <option></option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block buttonSignIn"  ng-click="createNotification()">
+                        Submit
+                    </button>
+                </div>
             </div>
         </div>
-
-
-
-        <div class="list">
-
-            <label class="item item-radio">
-                <input type="checkbox" name="group" ng-model="notificationData.textDelivery">
-                <div class="item-content">
-                    sms text delivery
-                </div>
-                <i class="radio-icon ion-checkmark"></i>
-            </label><label class="item item-radio">
-            <input type="checkbox" name="group" ng-model="notificationData.voiceDelivery">
-            <div class="item-content">
-                Voice delivery
-            </div>
-            <i class="radio-icon ion-checkmark"></i>
-        </label>
-        </div>
-
-        <div class="list">
-            <label class="item item-input item-select" ng-model="notificationData.locationType">
-                <div class="input-label">
-                    Target Location Type
-                </div>
-                <select ng-model="selectValue.selectOption" ng-change="select(); selectFunction()">
-                    <option value="Zip">Zip</option>
-                    <option value="County">County</option>
-                    <option value="state">state</option>
-                    <option value="National">National</option>
-                </select>
-
-            </label>
-
-        </div>
-
-
-        <div class="list">
-            <label class="item item-input" ng-show="Zip" >
-                <div class="input-label">
-                    <p>Enter Zip Code</p>
-                </div>
-                <input type="text" placeholder="enter zip" class="zip_text" ng-model="notificationData.zip">
-            </label>
-        </div>
-
-        <div class="list">
-            <label class="item item-input item-select" ng-show="state">
-                <div class="input-label">
-                    Select State
-                </div>
-                <select ng-options="value as value for value in allstates" ng-model="value"  ng-change="allCounty(value)">
-
-                </select>
-
-            </label>
-
-        </div>
-        <div class="list">
-            <label class="item item-input item-select" ng-show="County">
-                <div class="input-label">
-                    Select County
-                </div>
-                <select ng-options="county as county for county in allCountyies" ng-model="county">
-                    <option></option>
-
-                </select>
-
-            </label>
-
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <button class="button button-block buttonSignIn"  ng-click="createNotification()">
-                    Submit
-                </button>
-            </div>
-        </div>
-            </div>
 
     </ion-content>
 </ion-view>

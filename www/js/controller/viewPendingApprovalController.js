@@ -1,13 +1,13 @@
 eNotifyModule.controller('viewPendingApprovalController', ['$scope', '$state','$http','urlList', function($scope, $state,$http,urlList) {
 
     $scope.viewPandingApproval = [];
-    $scope.approveDeny=false;
-    $scope.approve=true;
-    $scope.deny=true;
+    $scope.approveDeny=true;
+    $scope.approve=false;
+    $scope.deny=false;
 
     $scope.factoryURL=urlList.getAllURLS;
 
-    $http.get($scope.factoryURL.getApprovalURL)
+    $http.get($scope.factoryURL.hostURL + 'api/tasuser/pending')
 
         .success(function(data){
             $scope.viewPandingApproval = data;
@@ -19,13 +19,13 @@ eNotifyModule.controller('viewPendingApprovalController', ['$scope', '$state','$
 
     $scope.approveDenyFunc=function(name){
 
-        $scope.approveDeny=true;
+        $scope.approveDeny=false;
 
         if(name=='approve'){
-            $scope.approve=false;
+            $scope.approve=true;
         }
         else if(name=='deny'){
-            $scope.deny=false;
+            $scope.deny=true;
         }
 
 
