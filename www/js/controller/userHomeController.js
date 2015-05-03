@@ -3,6 +3,8 @@ eNotifyModule.controller('userHomeController', ['$scope', '$state','$rootScope',
     $scope.name=localStorage.getItem("username");
 
 
+
+
     $scope.factoryURL=urlList.getAllURLS;
 
     $scope.logout= function () {

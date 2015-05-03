@@ -110,22 +110,26 @@ eNotifyModule.config(function($stateProvider,$urlRouterProvider,$httpProvider){
 
 }).controller('indexController', function ($scope,$state) {
 
-    $scope.optionValue='';
+    $scope.optionValue="Menu";
 
 
     $scope.profileF=function(name){
 
         if(name=="Profile")
         {
+            $scope.optionValue="Menu";
             $state.go('viewProfile');
 
         }
         else if( name=="Logout"){
+
+            $scope.optionValue="Menu";
             localStorage.clear();
             $state.go('login');
 
         }
         else{
+            $scope.optionValue="Menu";
             $state.go('homePage');
         }
 

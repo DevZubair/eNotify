@@ -57,15 +57,19 @@
 
 
         <ion-nav-buttons side="right">
+
           <select class="button button-icon" ng-model="optionValue" ng-change="profileF(optionValue)">
 
+
+            <option class="button button-icon" style="background-color: #0a9ec7" value="Menu">Menu</option>
             <option class="button button-icon" style="background-color: #0a9ec7" value="Profile">Profile</option>
             <option class="button button-icon" style="background-color: #0a9ec7" value="Logout">Logout</option>
           </select>
+
         </ion-nav-buttons>
 
         <ion-nav-buttons side="left">
-          <button class="home_icon button button-icon ion-ios-home" ui-sref="homePage"></button>
+          <button class="home_icon button button-icon ion-ios-home" ng-click="profileF('Home')"></button>
         </ion-nav-buttons>
 
         <ion-nav-title>

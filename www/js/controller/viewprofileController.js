@@ -7,9 +7,12 @@ eNotifyModule.controller('viewProfileController', ['$scope', '$state','$http','u
 
     $http.get($scope.factoryURL.hostURL + 'api/tasuser/profile')
         .success(function(data){
+            data.createdTs=new Date(data.createdTs);
             $scope.profile = data;
+
         }).error(function(err){
             console.log(err);
         })
+
 
 }]);

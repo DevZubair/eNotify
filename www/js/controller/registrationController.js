@@ -23,12 +23,13 @@ eNotifyModule.controller('registrationController', ['$scope', '$state','$rootSco
         {
             $scope.actualRole='APPROVER';
         }
-        else if($scope.registerationData.Notifier==true && $scope.registerationData.Approval==true){
-            $scope.actualRole='NOTIFIER, APPROVER';
-        }
         else{
             $scope.actualRole='';
         }
+        if($scope.registerationData.Notifier==true && $scope.registerationData.Approval==true){
+            $scope.actualRole='NOTIFIER, APPROVER';
+        }
+
 
         var url=$scope.factoryURL.hostURL + 'utils/register' ;
 
